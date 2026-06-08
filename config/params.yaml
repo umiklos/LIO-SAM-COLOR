@@ -2,14 +2,14 @@
   ros__parameters:
 
     # Topics
-    pointCloudTopic: "/sensing/lidar/top/pointcloud_raw"          # Point cloud data
-    imuTopic: "/sensing/gnss/clap/ros/imu"                        # IMU data
+    pointCloudTopic: "/lexus3/os_center/points"          # Point cloud data
+    imuTopic: "/imu/data"                                         # IMU data
     odomTopic: "/odometry/imu"                                    # IMU pre-preintegration odometry, same frequency as IMU
-    gpsTopic: "/sensing/gnss/clap/ros/odometry"                   # GPS odometry topic from navsat, see module_navsat.launch file
+    gpsTopic: "/lexus3/gps/nova/current_pose"                   # GPS odometry topic from navsat, see module_navsat.launch file
 
     # Frames
-    lidarFrame: "rs_helios_top"
-    baselinkFrame: "base_link"
+    lidarFrame: "lexus3/os_center"
+    baselinkFrame: "lexus3/base_link"
     odometryFrame: "odom"
     mapFrame: "map"
 
@@ -24,8 +24,8 @@
     savePCDDirectory: "/Downloads/LOAM/"         # in your home folder, starts and ends with "/". Warning: the code deletes "LOAM" folder then recreates it. See "mapOptimization" for implementation
 
     # Sensor Settings
-    sensor: velodyne                              # lidar sensor type, either 'velodyne', 'ouster' or 'livox'
-    N_SCAN: 32                                    # number of lidar channels (i.e., Velodyne/Ouster: 16, 32, 64, 128, Livox Horizon: 6)
+    sensor: ouster                              # lidar sensor type, either 'velodyne', 'ouster' or 'livox'
+    N_SCAN: 64                                    # number of lidar channels (i.e., Velodyne/Ouster: 16, 32, 64, 128, Livox Horizon: 6)
     Horizon_SCAN: 1800                            # lidar horizontal resolution (Velodyne:1800, Ouster:512,1024,2048, Livox Horizon: 4000)
     downsampleRate: 1                             # default: 1. Downsample your data if too many
     # points. i.e., 16 = 64 / 4, 16 = 16 / 1
@@ -93,6 +93,6 @@
     globalMapVisualizationLeafSize: 0.4           # meters, global map visualization cloud density
 
     #Color Cloud
-    cameraTopics: ["/sensing/camera/camera0/", "/sensing/camera/camera1/", "/sensing/camera/camera2/", "/sensing/camera/camera3/"]
-    imageTopicLastName: "image_raw"
+    cameraTopics: ["/lexus3/camera/camera0/", "/lexus3/camera/camera1/" ]
+    imageTopicLastName: "image_rect_color"
     cameraInfoTopicLastName: "camera_info"

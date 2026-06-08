@@ -85,6 +85,7 @@ cameraInfoTopicLastName: "camera_info"
 
 ```bash
 source install/setup.bash
+# launched nodes are named lio_sam_colored_*
 ros2 launch lio_sam run.launch.py
 
 ros2 bag play <your_rosbag_file>

@@ -38,7 +38,7 @@ public:
     int *cloudLabel;
 
     FeatureExtraction(const rclcpp::NodeOptions & options) :
-        ParamServer("lio_sam_featureExtraction", options)
+        ParamServer("lio_sam_colored_featureExtraction", options)
     {
         subLaserCloudInfo = create_subscription<lio_sam::msg::CloudInfo>(
             "lio_sam/deskew/cloud_info", qos,

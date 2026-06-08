@@ -195,7 +195,7 @@ public:
                       });
     }
 
-    mapOptimization(const rclcpp::NodeOptions & options) : ParamServer("lio_sam_mapOptimization", options)
+    mapOptimization(const rclcpp::NodeOptions & options) : ParamServer("lio_sam_colored_mapOptimization", options)
     {
         ISAM2Params parameters;
         parameters.relinearizeThreshold = 0.1;
@@ -436,32 +436,14 @@ public:
                                   // pointRGB.b = 0;
                                   // pointRGB.rgb = 0;
                               } else {
-                                  cv::Vec3d color = pair.second->get_cv_image().at<cv::Vec3b>(cv::Point(x, y));
-                                  cv::Scalar color_scalar(color[0], color[1], color[2]);
+                                  const cv::Vec3b color = pair.second->get_cv_image().at<cv::Vec3b>(cv::Point(x, y));
 
                                   pointRGB.x = point.x;
                                   pointRGB.y = point.y;
                                   pointRGB.z = point.z;
-
-                                  if (pair.second->get_image_msg()->encoding == "rgb8") {
-                                      pointRGB.r = color[0];
-                                      pointRGB.g = color[1];
-                                      pointRGB.b = color[2];
-                                      uint32_t rgb = (uint32_t(color[0]) << 16 | uint32_t(color[1]) << 8 |
-                                                      uint32_t(color[2]));
-                                  } else if (pair.second->get_image_msg()->encoding == "bgr8") {
-                                      pointRGB.r = color[0];
-                                      pointRGB.g = color[1];
-                                      pointRGB.b = color[2];
-                                      uint32_t rgb = (uint32_t(color[2]) << 16 | uint32_t(color[1]) << 8 |
-                                                      uint32_t(color[0]));
-                                  } else {
-                                      pointRGB.r = color[0];
-                                      pointRGB.g = color[1];
-                                      pointRGB.b = color[2];
-                                      uint32_t rgb = (uint32_t(color[0]) << 16 | uint32_t(color[1]) << 8 |
-                                                      uint32_t(color[2]));
-                                  }
+                                  pointRGB.b = color[0];
+                                  pointRGB.g = color[1];
+                                  pointRGB.r = color[2];
                               }
 
                               laserCloudCornerLast->push_back(pointRGB);
@@ -499,32 +481,15 @@ public:
                                   // pointRGB.b = 0;
                                   // pointRGB.rgb = 0;
                               } else {
-                                  cv::Vec3d color = pair.second->get_cv_image().at<cv::Vec3b>(cv::Point(x, y));
-                                  cv::Scalar color_scalar(color[0], color[1], color[2]);
+                                  const cv::Vec3b color = pair.second->get_cv_image().at<cv::Vec3b>(cv::Point(x, y));
 
                                   pointRGB.x = point.x;
                                   pointRGB.y = point.y;
                                   pointRGB.z = point.z;
 
-                                  if (pair.second->get_image_msg()->encoding == "rgb8") {
-                                      pointRGB.r = color[0];
-                                      pointRGB.g = color[1];
-                                      pointRGB.b = color[2];
-                                      uint32_t rgb = (uint32_t(color[0]) << 16 | uint32_t(color[1]) << 8 |
-                                                      uint32_t(color[2]));
-                                  } else if (pair.second->get_image_msg()->encoding == "bgr8") {
-                                      pointRGB.r = color[0];
-                                      pointRGB.g = color[1];
-                                      pointRGB.b = color[2];
-                                      uint32_t rgb = (uint32_t(color[2]) << 16 | uint32_t(color[1]) << 8 |
-                                                      uint32_t(color[0]));
-                                  } else {
-                                      pointRGB.r = color[0];
-                                      pointRGB.g = color[1];
-                                      pointRGB.b = color[2];
-                                      uint32_t rgb = (uint32_t(color[0]) << 16 | uint32_t(color[1]) << 8 |
-                                                      uint32_t(color[2]));
-                                  }
+                                  pointRGB.b = color[0];
+                                  pointRGB.g = color[1];
+                                  pointRGB.r = color[2];
                               }
                               laserCloudSurfLast->push_back(pointRGB);
                               cloud_surface.nextPoint();

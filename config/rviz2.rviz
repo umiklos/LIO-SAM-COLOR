@@ -7,8 +7,11 @@ Panels:
         - /Global Options1
         - /Status1
         - /PointCloud22/Topic1
+        - /PointCloud23
+        - /PointCloud23/Status1
+        - /PointCloud23/Topic1
       Splitter Ratio: 0.5823529362678528
-    Tree Height: 892
+    Tree Height: 1222
   - Class: rviz_common/Selection
     Name: Selection
   - Class: rviz_common/Tool Properties
@@ -82,61 +85,53 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        GNSS_INS/gnss_ins_link:
-          Value: false
         base_link:
           Value: true
-        camera0/camera_link:
-          Value: false
-        camera0/camera_optical_link:
-          Value: false
-        camera1/camera_link:
-          Value: false
-        camera1/camera_optical_link:
-          Value: false
-        camera2/camera_link:
-          Value: false
-        camera2/camera_optical_link:
-          Value: false
-        camera3/camera_link:
-          Value: false
-        camera3/camera_optical_link:
-          Value: false
+        c2_camera_left_link:
+          Value: true
+        c2_camera_right_link:
+          Value: true
         chassis_link:
-          Value: false
-        gnss_base_link:
           Value: false
         imu_link:
           Value: false
+        lexus3/base_link:
+          Value: true
+        lexus3/gps:
+          Value: true
+        lexus3/os_center:
+          Value: true
+        lexus3/os_left:
+          Value: true
+        lexus3/os_right:
+          Value: true
+        lexus3/radar_front_center:
+          Value: true
+        lexus3/radar_front_left:
+          Value: true
+        lexus3/radar_front_right:
+          Value: true
+        lexus3/radar_rear_left:
+          Value: true
+        lexus3/radar_rear_right:
+          Value: true
+        lexus3/zed_camera_link:
+          Value: true
+        lexus3_zed_camera_link:
+          Value: true
         lidar_link:
           Value: true
-        livox_front:
-          Value: false
-        livox_front_base_link:
-          Value: false
+        luminar_lidar_0:
+          Value: true
         map:
           Value: false
+        map_zala_0:
+          Value: true
         navsat_link:
-          Value: false
-        ndt_base_link:
           Value: false
         odom:
           Value: false
-        rs_bpearl_left:
-          Value: false
-        rs_bpearl_left_base_link:
-          Value: false
-        rs_bpearl_right:
-          Value: false
-        rs_bpearl_right_base_link:
-          Value: false
         rs_helios_top:
-          Value: false
-        rs_helios_top_base_link:
-          Value: false
-        sensor_kit_base_link:
-          Value: false
-        viewer:
           Value: false
       Marker Scale: 3
       Name: TF
@@ -145,48 +140,34 @@ Visualization Manager:
       Show Names: true
       Tree:
         map:
-          gnss_base_link:
-            {}
-          ndt_base_link:
+          lexus3/base_link:
+            c2_camera_left_link:
+              {}
+            c2_camera_right_link:
+              {}
+            lexus3/os_center:
+              {}
+            lexus3/os_left:
+              {}
+            lexus3/os_right:
+              {}
+            lexus3/radar_front_center:
+              {}
+            lexus3/radar_front_left:
+              {}
+            lexus3/radar_front_right:
+              {}
+            lexus3/radar_rear_left:
+              {}
+            lexus3/radar_rear_right:
+              {}
+            luminar_lidar_0:
+              {}
+          map_zala_0:
             {}
           odom:
-            base_link:
-              chassis_link:
-                imu_link:
-                  {}
-                navsat_link:
-                  {}
-              lidar_link:
-                {}
-              sensor_kit_base_link:
-                GNSS_INS/gnss_ins_link:
-                  {}
-                camera0/camera_link:
-                  camera0/camera_optical_link:
-                    {}
-                camera1/camera_link:
-                  camera1/camera_optical_link:
-                    {}
-                camera2/camera_link:
-                  camera2/camera_optical_link:
-                    {}
-                camera3/camera_link:
-                  camera3/camera_optical_link:
-                    {}
-                livox_front_base_link:
-                  livox_front:
-                    {}
-                rs_bpearl_left_base_link:
-                  rs_bpearl_left:
-                    {}
-                rs_bpearl_right_base_link:
-                  rs_bpearl_right:
-                    {}
-                rs_helios_top_base_link:
-                  rs_helios_top:
-                    {}
-          viewer:
-            {}
+            lidar_link:
+              {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -221,7 +202,8 @@ Visualization Manager:
       Enabled: true
       Name: MarkerArray
       Namespaces:
-        {}
+        loop_edges: true
+        loop_nodes: true
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -291,6 +273,40 @@ Visualization Manager:
         Reliability Policy: Best Effort
         Value: /lio_sam/imu/path
       Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz_default_plugins/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 5059
+      Min Color: 0; 0; 0
+      Min Intensity: 6
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.10000000149011612
+      Style: Flat Squares
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Best Effort
+        Value: /lexus3/os_center/points
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -337,39 +353,39 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 40.48527908325195
+      Distance: 77.4426498413086
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: -26.240406036376953
+        Y: -0.013348862528800964
+        Z: -6.4115986824035645
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5297966599464417
+      Pitch: 1.3447962999343872
       Target Frame: base_link
       Value: Orbit (rviz)
-      Yaw: 5.438656806945801
+      Yaw: 2.3504703044891357
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1043
+  Height: 1367
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd000000040000000000000156000003b9fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d000003b9000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f000003b9fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000003d000003b9000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004420000003efc0100000002fb0000000800540069006d00650100000000000004420000000000000000fb0000000800540069006d006501000000000000045000000000000000000000050f000003b900000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000015600000501fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003b00000501000000c700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f00000501fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000003b00000501000000a000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004420000003efc0100000002fb0000000800540069006d00650100000000000004420000000000000000fb0000000800540069006d00650100000000000004500000000000000000000007830000050100000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Tool Properties:
     collapsed: false
   Views:
     collapsed: false
-  Width: 1920
-  X: 1920
-  Y: 0
+  Width: 2548
+  X: 0
+  Y: 135

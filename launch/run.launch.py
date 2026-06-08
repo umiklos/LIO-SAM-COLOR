@@ -68,21 +68,21 @@ def generate_launch_description():
         Node(
             package='lio_sam',
             executable='lio_sam_imageProjection',
-            name='lio_sam_imageProjection',
+            name='lio_sam_colored_imageProjection',
             parameters=[parameter_file],
             output='screen'
         ),
         Node(
             package='lio_sam',
             executable='lio_sam_featureExtraction',
-            name='lio_sam_featureExtraction',
+            name='lio_sam_colored_featureExtraction',
             parameters=[parameter_file],
             output='screen'
         ),
         Node(
             package='lio_sam',
             executable='lio_sam_mapOptimization',
-            name='lio_sam_mapOptimization',
+            name='lio_sam_colored_mapOptimization',
             parameters=[parameter_file],
             output='screen'
         ),

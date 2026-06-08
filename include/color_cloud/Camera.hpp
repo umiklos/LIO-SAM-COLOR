@@ -10,6 +10,7 @@
 
 #include <sensor_msgs/msg/image.hpp>
 #include <sensor_msgs/msg/camera_info.hpp>
+#include <sensor_msgs/image_encodings.hpp>
 
 #include <geometry_msgs/msg/transform_stamped.h>
 #include <geometry_msgs/msg/detail/transform_stamped__struct.hpp>
@@ -34,7 +35,7 @@ namespace color_point_cloud {
         void set_cv_image(const sensor_msgs::msg::Image::ConstSharedPtr &msg) {
             cv_bridge::CvImageConstPtr cv_ptr;
             try {
-                cv_ptr = cv_bridge::toCvShare(msg, get_image_msg()->encoding);
+                cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8);
             } catch (cv_bridge::Exception &e) {
                 return;
             }

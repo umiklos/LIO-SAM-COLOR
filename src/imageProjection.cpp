@@ -92,7 +92,7 @@ private:
 
 public:
     ImageProjection(const rclcpp::NodeOptions & options) :
-            ParamServer("lio_sam_imageProjection", options), deskewFlag(0)
+            ParamServer("lio_sam_colored_imageProjection", options), deskewFlag(0)
     {
         callbackGroupLidar = create_callback_group(
             rclcpp::CallbackGroupType::MutuallyExclusive);
@@ -300,7 +300,7 @@ public:
             deskewFlag = -1;
             for (auto &field : currentCloudMsg.fields)
             {
-                if (field.name == "timestamp" || field.name == "t")
+                if (field.name == "timestamp" || field.name == "t" || field.name == "time")
                 {
                     deskewFlag = 1;
                     break;
