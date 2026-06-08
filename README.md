@@ -97,5 +97,5 @@ When mapping process is finished, run following command and save slam map to spe
 
 ```bash
 source install/setup.bash
-ros2 service call /lio_sam/save_map lio_sam/srv/SaveMap "{resolution: 0.2, destination: /Downloads/service_LOAM}"
+ros2 service call /lio_sam_colored/save_map lio_sam/srv/SaveMap "{resolution: 0.2, destination: /Downloads/service_LOAM}"
 ```
